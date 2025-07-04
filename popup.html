@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Focus Timer</title>
     <link rel="stylesheet" href="popup.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Focus Timer</h1>
-    <div id="timer">25:00</div>
-    <div class="buttons">
-      <button id="start">Start</button>
-      <button id="pause">Pause</button>
-      <button id="reset">Reset</button>
+    <div class="container">
+      <h1>⏱ Focus Timer</h1>
+      <div id="timer" class="glow">25:00</div>
+      <div class="buttons">
+        <button id="start">▶ Start</button>
+        <button id="pause">⏸ Pause</button>
+        <button id="reset">🔄 Reset</button>
+      </div>
     </div>
     <script src="popup.js"></script>
   </body>

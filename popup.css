@@ -1,31 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --cream: #f8f1e7;
+  --cream-dark: #e8dcc9;
+  --text-dark: #333333;
+  --primary-btn: #d6ae7b;
+  --primary-hover: #c19b6e;
+  --primary-active: #a57959;
+}
+
 body {
-  font-family: sans-serif;
-  width: 200px;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  width: 260px;
   text-align: center;
-  background-color: #f5f5f5;
+  border-radius: 12px;
+}
+
+.container {
+  
+  padding: 20px 16px;
 }
 
 h1 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-dark);
 }
 
 #timer {
-  font-size: 32px;
-  margin: 10px 0;
+  font-size: 38px;
+  font-weight: 600;
+  margin: 20px 0 30px;
+  padding: 14px 0;
+  
 }
 
-.buttons button {
-  margin: 5px;
-  padding: 6px 12px;
+/* … keep everything above unchanged … */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* bigger buttons with extra inner padding */
+button {
+  flex: 1;
+  padding: 14px 18px;          /* ⬅ more “cushion” for words */
+  font-size: 15px;             /* slightly larger text */
+  font-weight: 500;
   border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 4px;
+  border-radius: 10px;
+  background-color: var(--primary-btn);
+  color: #fff;
   cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-.buttons button:hover {
-  background-color: #45a049;
+button:hover { background-color: var(--primary-hover); }
+button:active {
+  transform: scale(0.96);
+  background-color: var(--primary-active);
 }
