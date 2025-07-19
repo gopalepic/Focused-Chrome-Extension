@@ -9,14 +9,14 @@
   <body>
     <div class="container">
 
-      <!-- ✅ Top Bar with Icons -->
+      <!-- Top Bar with Icons -->
       <div class="top-bar">
-        <button id="back-icon" class="icon-btn hidden">←</button>  <!-- Hidden initially -->
-        <button id="settings-icon" class="icon-btn">⚙️</button>
+        <button id="back-icon" class="icon-btn hidden">←</button>
+        <button id="menu-icon" class="icon-btn">⋮</button>
         <button id="close-icon" class="icon-btn close-btn">✕</button>
       </div>
 
-      <!-- ✅ Timer Page -->
+      <!-- Timer Page -->
       <div id="timer-page">
         <h1>⏱ Focus Timer</h1>
         <div id="timer" class="glow">25:00</div>
@@ -28,19 +28,63 @@
         </div>
       </div>
 
-      <!-- ✅ Settings Page -->
+      <!-- Menu Page -->
+      <div id="menu-page" class="hidden">
+        <h1> Menu</h1>
+        <div class="menu-row" id="Block sites-link">
+          <span>🚫 <span class="block-text">Blocked Sites</span></span>
+          <span class="arrow">›</span>
+        </div>
+
+        <div class="menu-row" id="history-link">
+          <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+          <path d="M12 7v5l4 2"/>
+          </svg> <span class="history-text">History</span></span>
+          <span class="arrow">›</span>
+        </div>
+
+        <div class="menu-row" id="settings-link">
+          <span>⚙️ Settings</span>
+          <span class="arrow">›</span>
+        </div>
+        
+      </div>
+
+      <!-- Settings Page -->
       <div id="settings-page" class="hidden">
         <h1>⚙ Settings</h1>
         <label>
           Focus Time (minutes):
           <input type="number" id="focusInput" value="25" min="1" max="90" />
-        </label>
-        <div class="buttons">
+         </label>
+         <div class="buttons">
           <button id="saveSettings">💾 Save</button>
-        </div>
-        <button id="toggle-theme" style="margin-top: 12px;">🌙 Toggle Theme</button>
+         </div>
+          <button id="toggle-theme" style="margin-top: 12px;">🌙 Toggle Theme</button>
       </div>
 
+      <!-- Blocked site page -->
+       <div id="Blocked-Site-page" class="hidden"> 
+        <h1> Blocked Sites List</h1>
+        <p>List of blocked sites will appear here.</p>
+       </div>
+
+      <!-- History Page -->
+      <div id="history-page" class="hidden">
+       <h1>
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+        <path d="M12 7v5l4 2"/>
+       </svg>
+       History
+       </h1>
+       <p>No history available yet.</p>
+      </div>
+
+      
     </div>
     <script src="popup.js"></script>
   </body>

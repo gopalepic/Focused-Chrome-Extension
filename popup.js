@@ -85,32 +85,66 @@ resetBtn.addEventListener("click", resetTimer);
 updateDisplay();
 updateSessionCount();
 
-// ✅ DOM references for pages & icons
+// ✅ DOM references
 const timerPage = document.getElementById("timer-page");
 const settingsPage = document.getElementById("settings-page");
-const settingsIcon = document.getElementById("settings-icon");
+const historyPage = document.getElementById("history-page");
+const menuPage = document.getElementById("menu-page");
+const blockedpage = document.getElementById("Blocked Site-page");
+const blocksitesLink = document.getElementById("Block sites-link");
+
+const menuIcon = document.getElementById("menu-icon");
 const backIcon = document.getElementById("back-icon");
 
-// ✅ Settings icon click
-settingsIcon.addEventListener("click", () => {
-  focusInput.value = localStorage.getItem("focusTime") || 25;
+const historyLink = document.getElementById("history-link");
+const settingsLink = document.getElementById("settings-link");
+
+const focusInput = document.getElementById("focusInput");
+
+// ✅ Navigation function with menu-icon toggle
+function showPage(pageId) {
   timerPage.classList.add("hidden");
-  settingsPage.classList.remove("hidden");
-
-  settingsIcon.classList.add("hidden"); // hide ⚙️
-  backIcon.classList.remove("hidden");  // show ←
-});
-
-// ✅ Back icon click
-backIcon.addEventListener("click", () => {
-  timerPage.classList.remove("hidden");
   settingsPage.classList.add("hidden");
+  historyPage.classList.add("hidden");
+  menuPage.classList.add("hidden");
+  document.getElementById("Blocked Site-page").classList.add("hidden");
 
-  settingsIcon.classList.remove("hidden"); // show ⚙️
-  backIcon.classList.add("hidden");        // hide ←
+  document.getElementById(pageId).classList.remove("hidden");
+
+  const isTimer = pageId === "timer-page";
+
+  // Toggle icons
+  backIcon.classList.toggle("hidden", isTimer);
+  menuIcon.classList.toggle("hidden", !isTimer);
+}
+
+// 3-dot Menu click → open menu page
+menuIcon.addEventListener("click", () => {
+  showPage("menu-page");
 });
 
-// ✅ Theme toggle
+// History row click → show history page
+historyLink.addEventListener("click", () => {
+  showPage("history-page");
+});
+
+// Settings row click → show settings page
+settingsLink.addEventListener("click", () => {
+  focusInput.value = localStorage.getItem("focusTime") || 25;
+  showPage("settings-page");
+});
+
+//Block sites row click → show blocked sites page
+blocksitesLink.addEventListener("click", () => {
+  showPage("Blocked Site-page");
+});
+
+// Back button → go to menu page
+backIcon.addEventListener("click", () => {
+  showPage("menu-page");
+});
+
+// Theme toggle
 const toggleThemeBtn = document.getElementById("toggle-theme");
 toggleThemeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
@@ -118,15 +152,13 @@ toggleThemeBtn.addEventListener("click", () => {
   localStorage.setItem("theme", theme);
 });
 
-// ✅ Apply saved theme
+// Apply saved theme
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
 
-// ✅ Save focus time
+// Save focus time
 const saveBtn = document.getElementById("saveSettings");
-const focusInput = document.getElementById("focusInput");
-
 saveBtn.addEventListener("click", () => {
   const value = parseInt(focusInput.value);
   if (value >= 1 && value <= 90) {
@@ -139,8 +171,8 @@ saveBtn.addEventListener("click", () => {
   }
 });
 
-// ✅ Close icon
+// Close icon
 const closeIcon = document.getElementById("close-icon");
 closeIcon.addEventListener("click", () => {
-  window.close(); // May not work inside extension popup (browser limitation)
+  window.close();
 });

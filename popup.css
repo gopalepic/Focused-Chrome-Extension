@@ -131,7 +131,6 @@ body.dark .icon-btn {
   color: #fff;
 }
 
-/* ✅ Close button style */
 .close-btn {
   position: absolute;
   top: -6px;
@@ -154,11 +153,11 @@ body.dark .close-btn:hover {
   color: #ff6b6b;
 }
 
-#settings-icon {
+#menu-icon {
   position: absolute;
   top: -6px;
   left: -3px;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -170,16 +169,16 @@ body.dark .close-btn:hover {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-#settings-icon:hover {
+#menu-icon:hover {
   background-color: rgba(0, 0, 0, 0.1);
   color: #333;
 }
 
-body.dark #settings-icon {
+body.dark #menu-icon {
   color: #fff;
 }
 
-body.dark #settings-icon:hover {
+body.dark #menu-icon:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #f5f5f5;
 }
@@ -212,4 +211,66 @@ body.dark #back-icon {
 body.dark #back-icon:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #f5f5f5;
+}
+
+/* ✅ Menu Page styles */
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.menu-row:hover {
+  background-color: var(--cream-dark);
+}
+
+body.dark .menu-row {
+  border: 1px solid #555;
+}
+
+body.dark .menu-row:hover {
+  background-color: #2c2c2c;
+}
+
+.arrow {
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+body.dark .arrow {
+  color: #fff;
+}
+.history-icon {
+  width: 17px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  top: 100px
+  /* text-align: center; */
+}
+
+.history-text {
+  display: inline-block;
+  position: relative;
+  top: -3px;
+}
+
+#history-page h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 3px;
+  font-size: 17px;
 }
