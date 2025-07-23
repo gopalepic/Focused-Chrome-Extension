@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <title>Focus Timer</title>
     <link rel="stylesheet" href="popup.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-
-      <!-- Top Bar with Icons -->
+      <!-- Top bar -->
       <div class="top-bar">
         <button id="back-icon" class="icon-btn hidden">←</button>
         <button id="menu-icon" class="icon-btn">⋮</button>
@@ -20,7 +22,9 @@
       <div id="timer-page">
         <h1>⏱ Focus Timer</h1>
         <div id="timer" class="glow">25:00</div>
-        <div id="session-info">🎯 Sessions Completed: <span id="sessionCount">0</span></div>
+        <div id="session-info">
+          🎯 Sessions Completed: <span id="sessionCount">0</span>
+        </div>
         <div class="buttons">
           <button id="start">▶ Start</button>
           <button id="pause">⏸ Pause</button>
@@ -30,61 +34,107 @@
 
       <!-- Menu Page -->
       <div id="menu-page" class="hidden">
-        <h1> Menu</h1>
-        <div class="menu-row" id="Block sites-link">
-          <span>🚫 <span class="block-text">Blocked Sites</span></span>
+        <h1>Menu</h1>
+
+        <!-- Set Duration -->
+        <div class="setting-row" id="Set-duration-link">
+          <span> <div class="Set-duration-icon">
+             <svg xmlns="http://www.w3.org/2000/svg" 
+             width="22" height="22" viewBox="0 0 22 22" 
+             fill="none" stroke="currentColor" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" 
+             class="Set-duration-icon">
+             <line x1="8" x2="12" y1="1" y2="1"/>
+             <line x1="10" x2="13" y1="12" y2="9"/>
+             <circle cx="10" cy="12" r="6"/>
+             </svg> </div>
+              <span>Set Duration</span>
+            </span>
+          <span class="arrow">˄</span> <!-- Up arrow initially -->
+        </div>
+        <!-- Duration Input Section (Initially hidden) -->
+
+        <div id="duration-input-row" class="duration-input-row">
+          <input type="number" id="focusInput" min="1" max="90" placeholder="Minutes" />
+          <button id="saveBtn">✔ Done</button>
+        </div>
+
+        <!-- Blocked Sites -->
+        <div class="menu-row" id="blocked-sites-link">
+          <span>⊘ <span class="block-text">Blocked Sites</span></span>
           <span class="arrow">›</span>
         </div>
 
+        <!-- History -->
         <div class="menu-row" id="history-link">
-          <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
-          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-          <path d="M3 3v5h5"/>
-          <path d="M12 7v5l4 2"/>
-          </svg> <span class="history-text">History</span></span>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <path d="M12 7v5l4 2" />
+            </svg>
+            <span class="history-text">History</span>
+          </span>
           <span class="arrow">›</span>
         </div>
 
+        <!-- Settings -->
         <div class="menu-row" id="settings-link">
-          <span>⚙️ Settings</span>
+          <span>⚙ Settings</span>
           <span class="arrow">›</span>
         </div>
-        
       </div>
 
       <!-- Settings Page -->
       <div id="settings-page" class="hidden">
-        <h1>⚙ Settings</h1>
-        <label>
-          Focus Time (minutes):
-          <input type="number" id="focusInput" value="25" min="1" max="90" />
-         </label>
-         <div class="buttons">
-          <button id="saveSettings">💾 Save</button>
-         </div>
-          <button id="toggle-theme" style="margin-top: 12px;">🌙 Toggle Theme</button>
+        <h1>Settings</h1>
+        <div class="setting-row">
+          <span>Dark Mode</span>
+          <label class="switch">
+            <input type="checkbox" id="darkModeBtn">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <span>Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="notifications">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="Reset-row">
+          <button id="resetHistoryBtn">All Reset </button>
+        </div>
+
       </div>
 
-      <!-- Blocked site page -->
-       <div id="Blocked-Site-page" class="hidden"> 
-        <h1> Blocked Sites List</h1>
-        <p>List of blocked sites will appear here.</p>
-       </div>
+      <!-- Blocked Sites Page -->
+      <div id="blocked-sites-page" class="hidden">
+        <h1>Blocked Sites List</h1>
+        <ul id="blockedSitesList">
+          <li>facebook.com</li>
+          <li>youtube.com</li>
+          <li>instagram.com</li>
+        </ul>
+      </div>
 
       <!-- History Page -->
       <div id="history-page" class="hidden">
-       <h1>
-       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
-        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-        <path d="M3 3v5h5"/>
-        <path d="M12 7v5l4 2"/>
-       </svg>
-       History
-       </h1>
-       <p>No history available yet.</p>
+        <h1>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="history-icon">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+            <path d="M12 7v5l4 2" />
+          </svg>
+          History
+        </h1>
+        <ul id="historyList">
+          <li>25 min session completed</li>
+          <li>10 min break completed</li>
+        </ul>
       </div>
-
-      
     </div>
     <script src="popup.js"></script>
   </body>
